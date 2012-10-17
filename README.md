@@ -9,16 +9,36 @@ The dropdowns are dismissed after a configurable delay. This fixes an issue that
 
 ### Usage
 
-Usage is simple:
+Just like in Bootstrap you can activate it without any JavaScript, just by adding a data-attribute, you can make it automatically work.
 
-```javascript
-$('.dropdown-toggle').dropdownHover([delay = 500,] [instantlyCloseOthers = false]);
+Add `data-hover="dropdown"` in addition (or in place of) Bootstrap's `data-toggle="dropdown"`.
+
+You can set options via data-attributes, too, via `data-delay` and `data-close-others`. Here's an example of markup:
+
+```html
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">Doesn't Close Others <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">My Account</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Change Email</a></li>
+        <li><a tabindex="-1" href="#">Change Password</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Logout</a></li>
+    </ul>
+</li>
 ```
 
-### Parameters
+Alternatively, you can initialize via JavaScript:
 
-* **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to 500.
-* **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is false.
+```javascript
+$('.dropdown-toggle').dropdownHover(options);
+```
+
+### options
+
+* **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
+* **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is `true`.
 
 ### Demo
 
@@ -28,8 +48,8 @@ You can view a demo for this plugin on my site: http://cameronspear.com/demos/tw
 
 This plugin purposedly lets you choose a selector (as opposed to apply this to everything with the class of `.dropdown-toggle`). This is so that you can selectively apply it where you want. Maybe you only want to use it for the main nav, and not have it activate for dropdown buttons in the main content. You can add a class to the item that normally gets `.dropdown-toggle` and use that class with this plugin to easily achieve that, or use a selector such as `.main-nav .dropdown-toggle`.
 
-Note that the `instantlyCloseOthers` only works with items that are matched by the original selector(s) used, i.e. if you call `.dropdownHover()` on multiple selectors, they are each uniquely tied together (but separately from other selectors) via `instantlyCloseOthers`.
+**Important:** Bootstrap relies on styles associated with the class `.dropdown-toggle` (for stuff like the caret color), and it is recommended you leave that class alone.
 
-### License
+### Me
 
-No license for now, or probably ever. Do what you want, but I would love credit or a shoutout. You can always follow me on Twitter: [@CWSpear](https://twitter.com/CWSpear)
+Follow me on Twitter: [@CWSpear](https://twitter.com/CWSpear) or check out my [blog](http://cameronspear.com/blog/)/
