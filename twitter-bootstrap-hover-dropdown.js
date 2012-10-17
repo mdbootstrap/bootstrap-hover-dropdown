@@ -1,6 +1,7 @@
 /*
  * Project: Twitter Bootstrap Hover Dropdown
  * Author: Cameron Spear
+ * Contributors: Mattia Larentis
  *
  * Dependencies?: Twitter Bootstrap's Dropdown plugin
  *
@@ -11,7 +12,7 @@
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
-    // outside the scipe of the jQuery plugin to
+    // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
 

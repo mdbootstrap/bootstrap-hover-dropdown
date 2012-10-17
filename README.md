@@ -52,6 +52,10 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 **Important:** Bootstrap relies on styles associated with the class `.dropdown-toggle` (for stuff like the caret color), and it is recommended you leave that class alone.
 
+### Contributions
+
+[Mattia Larentis](https://github.com/nostalgiaz) helped me with the idea for the data-attributes and doing the options via an object.
+
 ### Me
 
 Follow me on Twitter: [@CWSpear](https://twitter.com/CWSpear) or check out my [blog](http://cameronspear.com/blog/).
