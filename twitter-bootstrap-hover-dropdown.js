@@ -11,13 +11,16 @@
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
-    // outside the scipe of the jQuery plugin to keep track of all dropdowns
+    // outside the scipe of the jQuery plugin to
+    // keep track of all dropdowns
     var $allDropdowns = $();
 
-    // if instantlyCloseOthers is true, then it will instantly shut other nav items when a new one is hovered over
+    // if instantlyCloseOthers is true, then it will instantly
+    // shut other nav items when a new one is hovered over
     $.fn.dropdownHover = function(options) {
 
-        // the element we really care about is the dropdown-toggle's parent
+        // the element we really care about
+        // is the dropdown-toggle's parent
         $allDropdowns = $allDropdowns.add(this.parent());
 
         return this.each(function() {
@@ -34,9 +37,10 @@
                 timeout;
 
             $this.hover(function() {
+                if(options.instantlyCloseOthers === true)
+                    $allDropdowns.removeClass('open');
+
                 window.clearTimeout(timeout);
-                console.log(options.instantlyCloseOthers, typeof options.instantlyCloseOthers);
-                if(options.instantlyCloseOthers === true) $allDropdowns.removeClass('open');
                 $(this).addClass('open');
             }, function() {
                 timeout = window.setTimeout(function() {
