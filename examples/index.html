@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Twitter Bootstrap: Dropdown on Hover Plugin Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A demo for my simple plugin that enables twitter bootstrap dropdowns to activate on hover and provide a nice user experience.">
+    <meta name="author" content="Cameron Spear && Larentis Mattia">
+
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">Twitter Bootstrap: Dropdown on Hover Plugin Demo</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span8">
+            <div class="navbar navbar-static">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="#">Simple Example</a>
+                        <ul class="nav hover-dropdown pull-right" role="navigation">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                    <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                    <li>
+                                        <a tabindex="-1" href="http://google.com">Action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#anotherAction">Another
+                                        action</a></li>
+                                    <li><a tabindex="-1" href="#">Something
+                                        else
+                                        here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="#">Separated
+                                        link</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                    2 <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                                    <li><a tabindex="-1" href="#">Action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#">Another
+                                        action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#">Something
+                                        else
+                                        here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="#">Separated
+                                        link</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /navbar-example -->
+            </div>
+        </div>
+        <div class="span2"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span8">
+            <div class="navbar navbar-static">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="#">Example with data attributes</a>
+                        <ul class="nav hover-dropdown pull-right" role="navigation" data-delay="2000" data-close-others="falase">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                    <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                    <li>
+                                        <a tabindex="-1" href="http://google.com">Action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#anotherAction">Another
+                                        action</a></li>
+                                    <li><a tabindex="-1" href="#">Something
+                                        else
+                                        here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="#">Separated
+                                        link</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                                    2 <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                                    <li><a tabindex="-1" href="#">Action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#">Another
+                                        action</a>
+                                    </li>
+                                    <li><a tabindex="-1" href="#">Something
+                                        else
+                                        here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a tabindex="-1" href="#">Separated
+                                        link</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /navbar-example -->
+            </div>
+        </div>
+        <div class="span2"></div>
+    </div>
+    <div class="container">
+
+        <h1>Twitter Bootstrap: Dropdown on Hover Plugin Demo</h1>
+        <p>Hover over the nav items to see that they activate on hover. I'm setting the instantlyCloseOthers flag to true, so when you hover over a new nav item, the other ones instantly close (instead of waiting for their timeouts). See <a href="http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/">cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/</a> for more.</p>
+
+      </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+<script src="../static/twitter-bootstrap-hover-dropdown.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.hover-dropdown').dropdownHover();
+    });
+</script>
+</body>
+</html>
