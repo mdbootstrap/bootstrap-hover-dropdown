@@ -17,7 +17,9 @@ You can set options via data-attributes, too, via `data-delay` and `data-close-o
 
 ```html
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">Doesn't Close Others <b class="caret"></b></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
+        Account <b class="caret"></b>
+    </a>
     <ul class="dropdown-menu">
         <li><a tabindex="-1" href="#">My Account</a></li>
         <li class="divider"></li>
@@ -52,4 +54,4 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 ### Me
 
-Follow me on Twitter: [@CWSpear](https://twitter.com/CWSpear) or check out my [blog](http://cameronspear.com/blog/)/
+Follow me on Twitter: [@CWSpear](https://twitter.com/CWSpear) or check out my [blog](http://cameronspear.com/blog/).
