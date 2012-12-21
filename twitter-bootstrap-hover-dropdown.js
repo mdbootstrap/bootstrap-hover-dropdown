@@ -51,5 +51,7 @@
         });
     };
 
-    $('[data-hover="dropdown"]').dropdownHover();
+    $(document).ready(function() {
+        $('[data-hover="dropdown"]').dropdownHover();
+    });
 })(jQuery, this);
