@@ -27,7 +27,7 @@
         return this.each(function() {
             var $this = $(this).parent(),
                 defaults = {
-                    showdelay: 2500,
+                    showdelay: 500,
                     delay: 500,
                     instantlyCloseOthers: true
                 },
