@@ -27,22 +27,28 @@
         return this.each(function() {
             var $this = $(this).parent(),
                 defaults = {
+                    showdelay: 500,
                     delay: 500,
                     instantlyCloseOthers: true
                 },
                 data = {
+                    showdelay: $(this).data('show-delay'),
                     delay: $(this).data('delay'),
                     instantlyCloseOthers: $(this).data('close-others')
                 },
                 options = $.extend(true, {}, defaults, options, data),
-                timeout;
+                timeout,
+                showtimeout;
 
             $this.hover(function() {
-                if(options.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
+                showtimeout = window.setTimeout(function() {
+                    if(options.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
 
-                window.clearTimeout(timeout);
-                $(this).addClass('open');
+                    window.clearTimeout(timeout);
+                    $this.addClass('open');
+                }, options.showdelay);
+
             }, function() {
                 timeout = window.setTimeout(function() {
                     $this.removeClass('open');
