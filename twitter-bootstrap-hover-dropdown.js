@@ -39,7 +39,9 @@
 
             $this.hover(function() {
                 if(options.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
+                   // $allDropdowns.removeClass('open');
+                   // this will make the submenu to work.
+                    $this.removeClass('open');
 
                 window.clearTimeout(timeout);
                 $(this).addClass('open');
