@@ -37,6 +37,8 @@ Alternatively, you can initialize via JavaScript:
 $('.dropdown-toggle').dropdownHover(options);
 ```
 
+This also works with submenus without any other configuring since Twitter Bootstrap already supports this feature. Just use the markup like you were using before. Only the top level anchor tag needs any special markup for my plugin to work (see demo for proper markup).
+
 ### options
 
 * **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
