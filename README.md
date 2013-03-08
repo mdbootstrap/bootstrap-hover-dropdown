@@ -5,7 +5,7 @@ A simple plugin to enable twitter bootstrap dropdowns to activate on hover and p
 
 The dropdowns are dismissed after a configurable delay. This fixes an issue that can instantly close your nav because of a 1px gap between the button/nav item that activated the dropdown and the actual dropdown. It is also generally a better user experience, as users are not punished by going 1 pixel outside of the dropdown, which would instantly close the nav without a delay.
 
-**Note:** The HTML markup is the same as with any other Twitter Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method.
+**Note:** The HTML markup is the same as with any other Twitter Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method (i.e. this plugin combined with Bootstrap's default behavior work well to support both the ideal experience on desktop and mobile).
 
 ### Usage
 
@@ -39,7 +39,7 @@ $('.dropdown-toggle').dropdownHover(options);
 
 This also works with submenus without any other configuring since Twitter Bootstrap already supports this feature. Just use the markup like you were using before. Only the top level anchor tag needs any special markup for my plugin to work (see demo for proper markup).
 
-### options
+### Options
 
 * **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
 * **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is `true`.
@@ -57,6 +57,14 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 ### Contributions
 
 [Mattia Larentis](https://github.com/nostalgiaz) helped me with the idea for the data-attributes and doing the options via an object.
+
+### Roadmap
+
+As this plugin, in its simplicity, is pretty much exactly what I intend it to be, I don't plan to implement any new features. **One exception:** I would like to tweak it so that when you're in a submenu, it doesn't instantly close when you hover outside of it.
+
+If you have ideas for a new feature or something along those lines, you're welcome to share them with me, but I am not likely to implement it/merge your pull without a very compelling reason. You are absolutely free to create a fork and implement the feature yourself for your and others' use.
+
+This, of course, does not speak for bugs. If you have a bug, please bring it to my attention, and I will try and fix it. Note that 93.7% of people's issues are caused by incorrect markup, so please double check that first.
 
 ### Me
 
