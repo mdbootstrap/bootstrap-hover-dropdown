@@ -34,11 +34,11 @@
                     delay: $(this).data('delay'),
                     instantlyCloseOthers: $(this).data('close-others')
                 },
-                options = $.extend(true, {}, defaults, options, data),
+                settings = $.extend(true, {}, defaults, options, data),
                 timeout;
 
             $this.hover(function() {
-                if(options.instantlyCloseOthers === true)
+                if(settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
                 window.clearTimeout(timeout);
@@ -46,11 +46,12 @@
             }, function() {
                 timeout = window.setTimeout(function() {
                     $this.removeClass('open');
-                }, options.delay);
+                }, settings.delay);
             });
         });
     };
 
+    // apply dropdownHover to all elements with the data-hover="dropdown" attribute
     $(document).ready(function() {
         $('[data-hover="dropdown"]').dropdownHover();
     });
