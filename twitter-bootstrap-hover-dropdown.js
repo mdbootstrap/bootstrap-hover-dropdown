@@ -12,6 +12,14 @@
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
+    // pure win here: we create these spans so we can test if we have the responsive css loaded
+    // this is my attempt to hopefully make sure the IDs are unique
+    $('<span class="visible-desktop" style="font-size:1px !important" id="cwspear-is-awesome">.</span>').appendTo('body');
+
+    var shouldHover = function() {
+        return $('#cwspear-is-awesome').is(':visible');
+    };
+
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -38,15 +46,19 @@
                 timeout;
 
             $this.hover(function() {
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
+                if(shouldHover()) {
+                    if(settings.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
 
-                window.clearTimeout(timeout);
-                $(this).addClass('open');
+                    window.clearTimeout(timeout);
+                    $(this).addClass('open');
+                }
             }, function() {
-                timeout = window.setTimeout(function() {
-                    $this.removeClass('open');
-                }, settings.delay);
+                if(shouldHover()) {
+                    timeout = window.setTimeout(function() {
+                        $this.removeClass('open');
+                    }, settings.delay);
+                }
             });
         });
     };

@@ -86,56 +86,47 @@
 
   <div class="container">
 
+    <div class="alert">
+      Please note, hover is disabled in mobile by request. However, the submenus in the nav:
+      they still works on hover, but this is default bootstrap behavior.
+    </div>
+
     <h1>Twitter Bootstrap: Dropdown on Hover Plugin Demo</h1>
     <p>Hover over the nav items to see that they activate on hover. I'm setting the instantlyCloseOthers flag to true, so when you hover over a new nav item, the other ones instantly close (instead of waiting for their timeouts). See <a href="http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/">cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/</a> for more.</p>
 
     <h2><em>New!</em> Try it with data-attributes</h2>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse-2">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/">Dropdown Hover Plugin</a>
-          <div class="nav-collapse-2 collapse">
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="1000">1000ms Delay <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Why Would</a></li>
-                  <li><a tabindex="-1" href="#">A Home Tab</a></li>
-                  <li><a tabindex="-1" href="#">Have Dropdowns?</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-close-others="false">Doesn't Close Others <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">My Account</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">Change Email</a></li>
-                  <li><a tabindex="-1" href="#">Change Password</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">Logout</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-hover="dropdown">Defaults <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Contact</a></li>
-                  <li><a tabindex="-1" href="#">Contact My Mom</a></li>
-                  <li class="divider"></li>
-                  <li><a tabindex="-1" href="#">Contact Your Mom</a></li>
-                  <li><a tabindex="-1" href="#">Contact the President</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div> <!-- .nav-collapse -->
-        </div> <!-- .container -->
-      </div> <!-- .navbav-inner -->
-    </div> <!-- .navbar -->
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">1000ms Delay <b class="caret"></b></button>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#">Why Would</a></li>
+          <li><a tabindex="-1" href="#">A Home Tab</a></li>
+          <li><a tabindex="-1" href="#">Have Dropdowns?</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">Doesn't Close Others <b class="caret"></b></button>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#">My Account</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Change Email</a></li>
+          <li><a tabindex="-1" href="#">Change Password</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Logout</a></li>
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">Defaults <b class="caret"></b></button>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="#">Contact</a></li>
+          <li><a tabindex="-1" href="#">Contact My Mom</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Contact Your Mom</a></li>
+          <li><a tabindex="-1" href="#">Contact the President</a></li>
+        </ul>
+      </div>
+    </div>
 
     <h3>It also works with buttons and tabs</h3>
     <p>Just add <code>data-hover="dropdown"</code> where you'd put <code>data-toggle="dropdown"</code></p>
@@ -251,7 +242,7 @@
   <script>
     // very simple to use!
     $(document).ready(function() {
-      $('.js-activated').dropdownHover();
+      $('.js-activated').dropdownHover().dropdown();
     });
   </script>
 
