@@ -28,7 +28,8 @@
             var $this = $(this).parent(),
                 defaults = {
                     delay: 500,
-                    instantlyCloseOthers: true
+                    instantlyCloseOthers: true,
+                    parentClickEnable: true,
                 },
                 data = {
                     delay: $(this).data('delay'),
@@ -36,6 +37,9 @@
                 },
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout;
+
+            if (options.parentClickEnable === true)
+              $(this).addClass('disabled');
 
             $this.hover(function() {
                 if(settings.instantlyCloseOthers === true)

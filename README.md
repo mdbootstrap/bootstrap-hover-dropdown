@@ -43,6 +43,7 @@ This also works with submenus without any other configuring since Twitter Bootst
 
 * **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
 * **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is `true`.
+* **parentClickEnable**: *(optional)* A boolean value that makes top level links clickable. Defaults to true.
 
 ## Demo
 
