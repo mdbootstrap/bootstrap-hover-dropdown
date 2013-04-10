@@ -14,10 +14,10 @@
 ;(function($, window, undefined) {
     // pure win here: we create these spans so we can test if we have the responsive css loaded
     // this is my attempt to hopefully make sure the IDs are unique
-    $('<span class="visible-desktop" style="font-size:1px !important" id="cwspear-is-awesome">.</span>').appendTo('body');
+    $('<div class="nav-collapse collapse" style="display:none;" id="cwspear-is-awesome">.</div>').appendTo('body');
 
     var shouldHover = function() {
-        return $('#cwspear-is-awesome').is(':visible');
+        return $('#cwspear-is-awesome').height();
     };
 
     // outside the scope of the jQuery plugin to
