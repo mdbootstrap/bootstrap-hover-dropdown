@@ -12,14 +12,6 @@
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
-    // pure win here: we create these spans so we can test if we have the responsive css loaded
-    // this is my attempt to hopefully make sure the IDs are unique
-    $('<div class="nav-collapse collapse" style="display:none;" id="cwspear-is-awesome">.</div>').appendTo('body');
-
-    var shouldHover = function() {
-        return $('#cwspear-is-awesome').height();
-    };
-
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -63,8 +55,14 @@
         });
     };
 
-    // apply dropdownHover to all elements with the data-hover="dropdown" attribute
+    // helper function to see if we should hover
+    var shouldHover = function() { return $('#cwspear-is-awesome').height(); };
     $(document).ready(function() {
+        // apply dropdownHover to all elements with the data-hover="dropdown" attribute
         $('[data-hover="dropdown"]').dropdownHover();
+
+        // pure win here: we create these spans so we can test if we have the responsive css loaded
+        // this is my attempt to hopefully make sure the IDs are unique
+        $('<div class="nav-collapse collapse" style="display:none;" id="cwspear-is-awesome">.</div>').appendTo('body');
     });
 })(jQuery, this);
