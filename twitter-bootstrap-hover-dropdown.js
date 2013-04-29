@@ -73,18 +73,18 @@
     };
 
     // helper function to see if we should hover
-    var shouldHover = function() { return $('#cwspear-is-awesome').height(); };
+    var shouldHover = function() { return !!$('#cwspear-is-awesome').height(); };
     $(document).ready(function() {
         // apply dropdownHover to all elements with the data-hover="dropdown" attribute
         $('[data-hover="dropdown"]').dropdownHover();
 
         // pure win here: we create these spans so we can test if we have the responsive css loaded
         // this is my attempt to hopefully make sure the IDs are unique
-        $('<div class="nav-collapse collapse" style="display:none;" id="cwspear-is-awesome">.</div>').appendTo('body');
+        $('<div class="nav-collapse collapse" style="visibility:hidden;position:fixed" id="cwspear-is-awesome">.</div>').appendTo('body');
     });
 
     // for the submenu to close on delay, we need to override Bootstrap's CSS in this case
-    var css = '.dropdown-submenu:hover>.dropdown-menu { display: none; }';
+    var css = '.dropdown-submenu:hover>.dropdown-menu{display:none}';
     var style = document.createElement('style');
     style.type = 'text/css';
     if (style.styleSheet) {
