@@ -58,6 +58,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2013-04-29** Added support for submenus: Submenus should now honor the delay option and way before closing. They do not abide by the `instantlyCloseOthers` option, as it's not really relevant.
 * **2013-04-19** Fixed an issue where the conditional rule to disable hover on mobile wasn't working if you included the script in the header.
 * **2013-04-03** Made it so if you're using the responsive CSS and in tablet/mobile view, disable the hover.
 * **2013-03-16** Fixed an issue where the options you passed in via the method call were completely ignored.
