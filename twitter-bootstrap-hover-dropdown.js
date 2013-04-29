@@ -35,7 +35,7 @@
                     instantlyCloseOthers: $(this).data('close-others')
                 },
                 settings = $.extend(true, {}, defaults, options, data),
-                timeout;
+                timeout, subTimeout;
 
             $this.hover(function() {
                 if(shouldHover()) {
@@ -52,6 +52,23 @@
                     }, settings.delay);
                 }
             });
+
+            $this.find('.dropdown-submenu').hover(function() {
+                if(shouldHover()) {
+                    window.clearTimeout(subTimeout);
+                }
+                $(this).children('.dropdown-menu').show();
+            }, function() {
+                var $submenu = $(this).children('.dropdown-menu');
+                if(shouldHover()) {
+                    subTimeout = window.setTimeout(function() {
+                        $submenu.hide();
+                    }, settings.delay);
+                } else {
+                    // emulate Twitter Bootstrap's default behavior
+                    $submenu.hide();
+                }
+            });
         });
     };
 
@@ -65,4 +82,15 @@
         // this is my attempt to hopefully make sure the IDs are unique
         $('<div class="nav-collapse collapse" style="display:none;" id="cwspear-is-awesome">.</div>').appendTo('body');
     });
+
+    // for the submenu to close on delay, we need to override Bootstrap's CSS in this case
+    var css = '.dropdown-submenu:hover>.dropdown-menu { display: none; }';
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+    } else {
+        style.appendChild(document.createTextNode(css));
+    }
+    $('head')[0].appendChild(style);
 })(jQuery, this);
