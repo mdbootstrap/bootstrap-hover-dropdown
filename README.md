@@ -69,7 +69,7 @@ I'm a slacker and only started keeping track of changes/bug fixes starting in Ma
 
 ## Roadmap
 
-As this plugin, in its simplicity, is pretty much exactly what I intend it to be, I don't plan to implement any new features. **One exception:** I would like to tweak it so that when you're in a submenu, it doesn't instantly close when you hover outside of it.
+As this plugin, in its simplicity, is pretty much exactly what I intend it to be, I don't plan to implement any new features. ~~**One exception:** I would like to tweak it so that when you're in a submenu, it doesn't instantly close when you hover outside of it.~~ **Update:** I added this is late April 2013.
 
 If you have ideas for a new feature or something along those lines, you're welcome to share them with me, but I am not likely to implement it/merge your pull without a very compelling reason. You are absolutely free to create a fork and implement the feature yourself for your and others' use.
 
