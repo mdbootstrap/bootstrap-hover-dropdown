@@ -25,7 +25,8 @@
         $allDropdowns = $allDropdowns.add(this.parent());
 
         return this.each(function() {
-            var $this = $(this).parent(),
+            var $this = $(this),
+                $parent = $this.parent(),
                 defaults = {
                     delay: 500,
                     instantlyCloseOthers: true
@@ -37,23 +38,28 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout, subTimeout;
 
-            $this.hover(function() {
+            $parent.hover(function(event) {
+                // so a neighbor can't open the dropdown
+                if(!$parent.hasClass('open') && !$this.is(event.target)) {
+                    return true;
+                }
+
                 if(shouldHover()) {
                     if(settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
 
                     window.clearTimeout(timeout);
-                    $(this).addClass('open');
+                    $parent.addClass('open');
                 }
             }, function() {
                 if(shouldHover()) {
                     timeout = window.setTimeout(function() {
-                        $this.removeClass('open');
+                        $parent.removeClass('open');
                     }, settings.delay);
                 }
             });
 
-            $this.find('.dropdown-submenu').hover(function() {
+            $parent.find('.dropdown-submenu').hover(function() {
                 if(shouldHover()) {
                     window.clearTimeout(subTimeout);
                 }
