@@ -36,7 +36,7 @@
                     instantlyCloseOthers: $(this).data('close-others')
                 },
                 settings = $.extend(true, {}, defaults, options, data),
-                timeout, subTimeout;
+                timeout;
 
             $parent.hover(function(event) {
                 // so a neighbor can't open the dropdown
@@ -59,21 +59,24 @@
                 }
             });
 
-            $parent.find('.dropdown-submenu').hover(function() {
-                if(shouldHover()) {
-                    window.clearTimeout(subTimeout);
-                }
-                $(this).children('.dropdown-menu').show();
-            }, function() {
-                var $submenu = $(this).children('.dropdown-menu');
-                if(shouldHover()) {
-                    subTimeout = window.setTimeout(function() {
-                        $submenu.hide();
-                    }, settings.delay);
-                } else {
-                    // emulate Twitter Bootstrap's default behavior
-                    $submenu.hide();
-                }
+            $parent.find('.dropdown-submenu').each(function(){
+                var subTimeout;
+                $(this).hover(function() {
+                    if(shouldHover()) {
+                        window.clearTimeout(subTimeout);
+                    }
+                    $(this).children('.dropdown-menu').show();
+                    }, function() {
+                        var $submenu = $(this).children('.dropdown-menu');
+                        if(shouldHover()) {
+                            subTimeout = window.setTimeout(function() {
+                                $submenu.hide();
+                            }, settings.delay);
+                        } else {
+                            // emulate Twitter Bootstrap's default behavior
+                            $submenu.hide();
+                        }
+                });
             });
         });
     };
