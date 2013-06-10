@@ -58,6 +58,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2013-06-10** Always instantly close submenu siblings when opening a new one. Issue #19.
 * **2013-06-10** A fix for my last fix that would sometimes cause the correct item to not trigger when it should. Issue #18.
 * **2013-05-08** Fix issue where a sibling could open a drop down that wasn't theirs. Issue #18.
 * **2013-04-29** Added support for submenus: Submenus should now honor the delay option and way before closing. They do not abide by the `instantlyCloseOthers` option, as it's not really relevant.

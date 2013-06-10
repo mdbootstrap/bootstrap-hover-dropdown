@@ -70,23 +70,27 @@
                 }
             });
 
+            // handle submenus
             $parent.find('.dropdown-submenu').each(function(){
+                var $this = $(this);
                 var subTimeout;
-                $(this).hover(function() {
+                $this.hover(function() {
                     if(shouldHover()) {
                         window.clearTimeout(subTimeout);
                     }
-                    $(this).children('.dropdown-menu').show();
-                    }, function() {
-                        var $submenu = $(this).children('.dropdown-menu');
-                        if(shouldHover()) {
-                            subTimeout = window.setTimeout(function() {
-                                $submenu.hide();
-                            }, settings.delay);
-                        } else {
-                            // emulate Twitter Bootstrap's default behavior
+                    $this.children('.dropdown-menu').show();
+                    // always close submenu siblings instantly
+                    $this.siblings().children('.dropdown-menu').hide();
+                }, function() {
+                    var $submenu = $this.children('.dropdown-menu');
+                    if(shouldHover()) {
+                        subTimeout = window.setTimeout(function() {
                             $submenu.hide();
-                        }
+                        }, settings.delay);
+                    } else {
+                        // emulate Twitter Bootstrap's default behavior
+                        $submenu.hide();
+                    }
                 });
             });
         });
