@@ -59,6 +59,17 @@
                 }
             });
 
+            // this helps with button groups!
+            $this.hover(function() {
+                if(shouldHover()) {
+                    if(settings.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
+
+                    window.clearTimeout(timeout);
+                    $parent.addClass('open');
+                }
+            });
+
             $parent.find('.dropdown-submenu').each(function(){
                 var subTimeout;
                 $(this).hover(function() {
