@@ -44,7 +44,7 @@
                     return true;
                 }
 
-                if(shouldHover()) {
+                if(shouldHover) {
                     if(settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
 
@@ -52,7 +52,7 @@
                     $parent.addClass('open');
                 }
             }, function() {
-                if(shouldHover()) {
+                if(shouldHover) {
                     timeout = window.setTimeout(function() {
                         $parent.removeClass('open');
                     }, settings.delay);
@@ -62,7 +62,7 @@
 
             // this helps with button groups!
             $this.hover(function() {
-                if(shouldHover()) {
+                if(shouldHover) {
                     if(settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
 
@@ -76,7 +76,7 @@
                 var $this = $(this);
                 var subTimeout;
                 $this.hover(function() {
-                    if(shouldHover()) {
+                    if(shouldHover) {
                         window.clearTimeout(subTimeout);
                         $this.children('.dropdown-menu').show();
                         // always close submenu siblings instantly
@@ -84,7 +84,7 @@
                     }
                 }, function() {
                     var $submenu = $this.children('.dropdown-menu');
-                    if(shouldHover()) {
+                    if(shouldHover) {
                         subTimeout = window.setTimeout(function() {
                             $submenu.hide();
                         }, settings.delay);
@@ -97,15 +97,29 @@
         });
     };
 
-    // helper function to see if we should hover
-    var shouldHover = function() { return !$('#cwspear-is-awesome').is(':visible'); };
+    // helper variables to guess if they are using a mouse
+    var shouldHover = false,
+        mouse_info = {
+            hits: 0,
+            x: null,
+            y: null
+        };
     $(document).ready(function() {
         // apply dropdownHover to all elements with the data-hover="dropdown" attribute
         $('[data-hover="dropdown"]').dropdownHover();
 
-        // pure win here: we create these spans so we can test if we have the responsive css loaded
-        // this is my attempt to hopefully make sure the IDs are unique
-        $('<div class="navbar" style="visibility:hidden;position:fixed"><div class="btn-navbar" id="cwspear-is-awesome">.</div></div>').appendTo('body');
+        // if the mouse movements are "smooth" or there are more than 20, they probably have a real mouse
+        $(document).mousemove(function(e){
+            mouse_info.hits++;
+            if (mouse_info.hits > 20 || (Math.abs(e.pageX - mouse_info.x) + Math.abs(e.pageY - mouse_info.y)) < 4) {
+                $(this).unbind(e);
+                shouldHover = true;
+            }
+            else {
+                mouse_info.x = e.pageX;
+                mouse_info.y = e.pageY;
+            }
+        });
     });
 
     // for the submenu to close on delay, we need to override Bootstrap's CSS in this case
