@@ -1,6 +1,12 @@
 Twitter Bootstrap Hover Dropdown Plugin
 =======================================
 
+#### Updated for Bootstrap 3
+
+I updated the demo with Bootstrap 3, as well as removed code associated to submenus ([not supported in Bootstrap 3](https://github.com/twbs/bootstrap/pull/6342#issuecomment-11594010)) and touch devices (just make sure you have `data-toggle="dropdown"` to let Mobile do its thing and my plugin won't interfere).
+
+## Introduction
+
 A simple plugin to enable twitter bootstrap dropdowns to activate on hover and provide a nice user experience.
 
 The dropdowns are dismissed after a configurable delay. This fixes an issue that can instantly close your nav because of a 1px gap between the button/nav item that activated the dropdown and the actual dropdown. It is also generally a better user experience, as users are not punished by going 1 pixel outside of the dropdown, which would instantly close the nav without a delay.
@@ -58,6 +64,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2013-08-02** Add support for Bootstrap 3. For Bootstrap 2.x.x, use the `bootstrap-2.x.x` branch.
 * **2013-06-10** Always instantly close submenu siblings when opening a new one. Issue #19.
 * **2013-06-10** A fix for my last fix that would sometimes cause the correct item to not trigger when it should. Issue #18.
 * **2013-05-08** Fix issue where a sibling could open a drop down that wasn't theirs. Issue #18.
