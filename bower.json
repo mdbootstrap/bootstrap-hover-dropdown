@@ -1,0 +1,20 @@
+{
+  "name": "twitter-bootstrap-hover-dropdown",
+  "version": "2.0.0",
+  "main": "./twitter-bootstrap-hover-dropdown.min.js",
+  "description": "An unofficial Twitter Bootstrap plugin to enable Twitter Bootstrap dropdowns to activate on hover and provide a nice user experience.",
+  "homepage": "https://github.com/CWSpear/twitter-bootstrap-hover-dropdown",
+  "main": [
+    "./twitter-bootstrap-hover-dropdown.min.js",
+  ],
+  "keywords": [
+    "twitter",
+    "bootstrap",
+    "hover",
+    "dropdowns"
+  ],
+  "author": {
+    "name": "Cameron Spear",
+    "web": "http://cameronspear.com"
+  }
+}
