@@ -13,6 +13,25 @@ The dropdowns are dismissed after a configurable delay. This fixes an issue that
 
 **Note:** The HTML markup is the same as with any other Twitter Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method (i.e. this plugin combined with Bootstrap's default behavior work well to support both the ideal experience on desktop and mobile).
 
+## Installation
+
+You can simply download and extract the package downloaded from GitHub. Alternatively, you can download the files via [Bower](http://bower.io/) (a JavaScript package management system):
+
+```
+bower install bootstrap-hover-dropdown
+```
+
+which will also automatically install Twitter Bootstrap and jQuery if needed.
+
+Once you have the files downloaded, link to the files in your code *after* you include the main Twitter Bootstrap JS file(s):
+
+```html
+<!-- script order matters! -->
+<script src="/path/to/jquery.min.js"></script>
+<script src="/path/to/bootstrap.min.js"></script>
+<script src="/path/to/twitter-bootstrap-hover-dropdown.min.js"></script>
+```
+
 ## Usage
 
 Just like in Bootstrap you can activate it without any JavaScript, just by adding a data-attribute, you can make it automatically work.
