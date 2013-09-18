@@ -3,11 +3,11 @@
  * Author: Cameron Spear
  * Contributors: Mattia Larentis
  *
- * Dependencies?: Twitter Bootstrap's Dropdown plugin
+ * Dependencies: Twitter Bootstrap's Dropdown plugin, jQuery
  *
  * A simple plugin to enable twitter bootstrap dropdowns to active on hover and provide a nice user experience.
  *
- * No license, do what you want. I'd love credit or a shoutout, though.
+ * License: MIT
  *
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
