@@ -7,11 +7,11 @@ I updated the demo with Bootstrap 3, as well as removed code associated to subme
 
 ## Introduction
 
-A simple plugin to enable twitter bootstrap dropdowns to activate on hover and provide a nice user experience.
+A simple plugin to enable Bootstrap dropdowns to activate on hover and provide a nice user experience.
 
 The dropdowns are dismissed after a configurable delay. This fixes an issue that can instantly close your nav because of a 1px gap between the button/nav item that activated the dropdown and the actual dropdown. It is also generally a better user experience, as users are not punished by going 1 pixel outside of the dropdown, which would instantly close the nav without a delay.
 
-**Note:** The HTML markup is the same as with any other Twitter Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method (i.e. this plugin combined with Bootstrap's default behavior work well to support both the ideal experience on desktop and mobile).
+**Note:** The HTML markup is the same as with any other Bootstrap dropdown. This will not interfere with Bootstrap's default activate-on-click method (i.e. this plugin combined with Bootstrap's default behavior work well to support both the ideal experience on desktop and mobile).
 
 ## Installation
 
@@ -21,9 +21,9 @@ You can simply download and extract the package downloaded from GitHub. Alternat
 bower install bootstrap-hover-dropdown
 ```
 
-which will also automatically install Twitter Bootstrap and jQuery if needed.
+which will also automatically install Bootstrap and jQuery if needed.
 
-Once you have the files downloaded, link to the files in your code *after* you include the main Twitter Bootstrap JS file(s):
+Once you have the files downloaded, link to the files in your code *after* you include the main Bootstrap JS file(s):
 
 ```html
 <!-- script order matters! -->
@@ -62,7 +62,7 @@ Alternatively, you can initialize via JavaScript:
 $('.dropdown-toggle').dropdownHover(options);
 ```
 
-This also works with submenus without any other configuring since Twitter Bootstrap already supports this feature. Just use the markup like you were using before. Only the top level anchor tag needs any special markup for my plugin to work (see demo for proper markup).
+This also works with submenus without any other configuring since Bootstrap already supports this feature. Just use the markup like you were using before. Only the top level anchor tag needs any special markup for my plugin to work (see demo for proper markup).
 
 ## Options
 
