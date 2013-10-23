@@ -48,11 +48,12 @@
                     $allDropdowns.removeClass('open');
 
                 window.clearTimeout(timeout);
-                $parent.addClass('open');
+                $parent.addClass('open')
                 $parent.trigger(e = $.Event('show.bs.dropdown'));
             }, function() {
                 timeout = window.setTimeout(function() {
                     $parent.removeClass('open');
+                    $parent.trigger('hide.bs.dropdown');
                 }, settings.delay);
             });
 
@@ -63,6 +64,7 @@
 
                 window.clearTimeout(timeout);
                 $parent.addClass('open');
+                $parent.trigger(e = $.Event('show.bs.dropdown'));
             });
 
             // handle submenus
