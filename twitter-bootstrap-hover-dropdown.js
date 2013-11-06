@@ -49,7 +49,7 @@
 
                 window.clearTimeout(timeout);
                 $parent.addClass('open');
-                $parent.trigger(e = $.Event('show.bs.dropdown'));
+                $parent.trigger($.Event('show.bs.dropdown'));
             }, function() {
                 timeout = window.setTimeout(function() {
                     $parent.removeClass('open');
@@ -64,7 +64,7 @@
 
                 window.clearTimeout(timeout);
                 $parent.addClass('open');
-                $parent.trigger(e = $.Event('show.bs.dropdown'));
+                $parent.trigger($.Event('show.bs.dropdown'));
             });
 
             // handle submenus
