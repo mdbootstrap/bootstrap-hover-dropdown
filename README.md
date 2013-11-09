@@ -83,6 +83,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2013-11-09** Disable this plugin for devices that support touch. The plugin was causing issues with some mobile devices, and it's not necessary for them.
 * **2013-08-02** Add support for Bootstrap 3. For Bootstrap 2.x.x, use the `bootstrap-2.x.x` branch.
 * **2013-06-10** Always instantly close submenu siblings when opening a new one. Issue #19.
 * **2013-06-10** A fix for my last fix that would sometimes cause the correct item to not trigger when it should. Issue #18.

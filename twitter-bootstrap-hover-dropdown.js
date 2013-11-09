@@ -12,6 +12,10 @@
  * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
+    // don't do anything if touch is supported
+    // (plugin causes some issues on mobile)
+    if('ontouchstart' in document) return;
+
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
