@@ -1,5 +1,5 @@
-Twitter Bootstrap Hover Dropdown Plugin
-=======================================
+Bootstrap Hover Dropdown Plugin
+===============================
 
 #### Updated for Bootstrap 3
 
@@ -29,7 +29,7 @@ Once you have the files downloaded, link to the files in your code *after* you i
 <!-- script order matters! -->
 <script src="/path/to/jquery.min.js"></script>
 <script src="/path/to/bootstrap.min.js"></script>
-<script src="/path/to/twitter-bootstrap-hover-dropdown.min.js"></script>
+<script src="/path/to/bootstrap-hover-dropdown.min.js"></script>
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ This also works with submenus without any other configuring since Bootstrap alre
 
 ## Demo
 
-You can view a demo for this plugin on my site: http://cameronspear.com/demos/twitter-bootstrap-hover-dropdown/
+You can view a demo for this plugin on my site: http://cameronspear.com/demos/bootstrap-hover-dropdown/
 
 ### A Note on Choosing a Selector
 

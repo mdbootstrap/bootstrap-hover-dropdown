@@ -1,5 +1,5 @@
 /*
- * Project: Twitter Bootstrap Hover Dropdown
+ * Project: Bootstrap Hover Dropdown
  * Author: Cameron Spear
  * Contributors: Mattia Larentis
  *
@@ -9,7 +9,7 @@
  *
  * License: MIT
  *
- * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
+ * http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
  */
 ;(function($, window, undefined) {
     // don't do anything if touch is supported
