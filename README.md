@@ -1,5 +1,7 @@
-Bootstrap Hover Dropdown Plugin (2.0.1)
-=======================================
+Bootstrap Hover Dropdown Plugin
+===============================
+
+**Version 2.0.1**
 
 #### Name Change
 
