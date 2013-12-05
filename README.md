@@ -3,7 +3,7 @@ Bootstrap Hover Dropdown Plugin (2.0.1)
 
 #### Name Change
 
-*Twitter Bootstrap* is now just *Bootstrap*, and I've renamed this repo, **renamed the files** and change all references from *Twitter Bootstrap* to just *Bootstrap* to relect that.
+*Twitter Bootstrap* is now just *Bootstrap*, and I've renamed this repo, **renamed the files** and change all references from *Twitter Bootstrap* to just *Bootstrap* in the docs/example to reflect that.
 
 No actual code changed, so I am keeping the current version (`2.0.1` at the time of this writing), but be aware of the lack of *twitter-* from the beginning of the JS files and how that might affect you.
 
