@@ -81,7 +81,8 @@ This also works with submenus without any other configuring since Bootstrap alre
 
 ## Demo
 
-You can view a demo for this plugin on my site: http://cameronspear.com/demos/bootstrap-hover-dropdown/
+You can view a demo for this plugin on the Github page of this project: https://cwspear.github.com/bootstrap-hover-dropdown/
+
 
 ### A Note on Choosing a Selector
 
@@ -106,7 +107,8 @@ I'm a slacker and only started keeping track of changes/bug fixes starting in Ma
 
 ## Contributions
 
-[Mattia Larentis](https://github.com/nostalgiaz) helped me with the idea for the data-attributes and doing the options via an object.
+ - [Mattia Larentis](https://github.com/nostalgiaz) helped me with the idea for the data-attributes and doing the options via an object.
+ - [Ionică Bizău](https://github.com/IonicaBizau) helped me with the demo on Github pages (`gh-pages` branch)
 
 ## Roadmap
 
