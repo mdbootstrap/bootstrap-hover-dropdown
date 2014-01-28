@@ -1,7 +1,7 @@
 Bootstrap Hover Dropdown Plugin
 ===============================
 
-**Version 2.0.1**
+**Version 2.0.2**
 
 #### Name Change
 
@@ -93,6 +93,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2014-01-27** Fixed an issue where chaining could break on mobile and cleaned up the the way the plugin triggered events. Also cleaned up the demo (fixed navbar appearance).
 * **2013-12-05** Change all references of *Twitter Bootstrap* to *Bootstrap* to reflect Bootstrap's name change.
 * **2013-11-09** Disable this plugin for devices that support touch. The plugin was causing issues with some mobile devices, and it's not necessary for them.
 * **2013-08-02** Add support for Bootstrap 3. For Bootstrap 2.x.x, use the `bootstrap-2.x.x` branch.
