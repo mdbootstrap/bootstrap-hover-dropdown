@@ -1,4 +1,4 @@
-/*
+/**
  * Project: Bootstrap Hover Dropdown
  * Author: Cameron Spear
  * Contributors: Mattia Larentis
