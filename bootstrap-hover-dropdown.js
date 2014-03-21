@@ -53,6 +53,8 @@
                     return true; 
                 }
 
+                $allDropdowns.find(':focus').blur();
+
                 if(settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
@@ -68,6 +70,8 @@
 
             // this helps with button groups!
             $this.hover(function () {
+                $allDropdowns.find(':focus').blur();
+
                 if(settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
