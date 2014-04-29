@@ -1,17 +1,17 @@
-/**
- * Project: Bootstrap Hover Dropdown
+﻿/*
+ * Project: Twitter Bootstrap Hover Dropdown
  * Author: Cameron Spear
  * Contributors: Mattia Larentis
  *
- * Dependencies: Bootstrap's Dropdown plugin, jQuery
+ * Dependencies?: Twitter Bootstrap's Dropdown plugin
  *
- * A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
+ * A simple plugin to enable twitter bootstrap dropdowns to active on hover and provide a nice user experience.
  *
- * License: MIT
+ * No license, do what you want. I'd love credit or a shoutout, though.
  *
- * http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
+ * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
  */
-;(function ($, window, undefined) {
+; (function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -19,9 +19,6 @@
     // if instantlyCloseOthers is true, then it will instantly
     // shut other nav items when a new one is hovered over
     $.fn.dropdownHover = function (options) {
-        // don't do anything if touch is supported
-        // (plugin causes some issues on mobile)
-        if('ontouchstart' in document) return this; // don't want to affect chaining
 
         // the element we really care about
         // is the dropdown-toggle's parent
@@ -38,50 +35,58 @@
                     delay: $(this).data('delay'),
                     instantlyCloseOthers: $(this).data('close-others')
                 },
-                showEvent   = 'show.bs.dropdown',
-                hideEvent   = 'hide.bs.dropdown',
-                // shownEvent  = 'shown.bs.dropdown',
-                // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout;
+            var eventtype
+            var mouseout = function (event) {
+                if (eventtype !== 'MSPointerDown') {
+                    timeout = window.setTimeout(function () {
+                        $parent.removeClass('open');
 
-            $parent.hover(function (event) {
-                // so a neighbor can't open the dropdown
-                if(!$parent.hasClass('open') && !$this.is(event.target)) {
-                    // stop this event, stop executing any code 
-                    // in this callback but continue to propagate
-                    return true; 
+                    }, settings.delay);
+                }
+            }
+            var mouseoverParent = function (event) {
+                if (!$parent.hasClass('open') && !$this.is(event.target)) {
+                    return true;
                 }
 
-                $allDropdowns.find(':focus').blur();
-
-                if(settings.instantlyCloseOthers === true)
+                if (settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
                 window.clearTimeout(timeout);
                 $parent.addClass('open');
-                $this.trigger(showEvent);
-            }, function () {
-                timeout = window.setTimeout(function () {
-                    $parent.removeClass('open');
-                    $this.trigger(hideEvent);
-                }, settings.delay);
+                eventtype = event.type;
+            }
+
+            var mouseeverelm = function (event) {
+
+                if (settings.instantlyCloseOthers === true)
+                    $allDropdowns.removeClass('open');
+
+                window.clearTimeout(timeout);
+                $parent.addClass('open');
+
+            }
+
+            $parent.bind('mouseover', function (event) {
+                mouseoverParent(event);
             });
-
-            // this helps with button groups!
-            $this.hover(function () {
-                $allDropdowns.find(':focus').blur();
-
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
-
-                window.clearTimeout(timeout);
-                $parent.addClass('open');
-                $this.trigger(showEvent);
+            $parent.bind('mouseleave', function (event) {
+                mouseout();
+            })
+            $parent.bind('touchstart', function (e) {
+                mouseoverParent(e);
+            });
+            $parent.bind('MSPointerDown', function (e) {
+                mouseoverParent(e);
+            });
+            $this.bind('mouseover', function () {
+                mouseeverelm();
             });
 
             // handle submenus
-            $parent.find('.dropdown-submenu').each(function (){
+            $parent.find('.dropdown-submenu').each(function () {
                 var $this = $(this);
                 var subTimeout;
                 $this.hover(function () {
@@ -103,4 +108,5 @@
         // apply dropdownHover to all elements with the data-hover="dropdown" attribute
         $('[data-hover="dropdown"]').dropdownHover();
     });
+
 })(jQuery, this);
