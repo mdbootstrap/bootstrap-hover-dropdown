@@ -11,7 +11,8 @@
   ],
   "homepage": "https://github.com/CWSpear/bootstrap-hover-dropdown",
   "dependencies": {
-    "bootstrap": "^3.0.0"
+    "bootstrap": "^3.0.0",
+    "jquery": ">= 1.9.0"
   },
   "author": {
     "name": "Cameron Spear",
