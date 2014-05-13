@@ -48,19 +48,12 @@
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
-                    // stop this event, stop executing any code 
+                    // stop this event, stop executing any code
                     // in this callback but continue to propagate
-                    return true; 
+                    return true;
                 }
 
-                $allDropdowns.find(':focus').blur();
-
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
-
-                window.clearTimeout(timeout);
-                $parent.addClass('open');
-                $this.trigger(showEvent);
+                openDropdown();
             }, function () {
                 timeout = window.setTimeout(function () {
                     $parent.removeClass('open');
@@ -70,14 +63,15 @@
 
             // this helps with button groups!
             $this.hover(function () {
-                $allDropdowns.find(':focus').blur();
+                // this helps prevent a double event from firing.
+                // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
+                if(!$parent.hasClass('open') && !$parent.is(event.target)) {
+                    // stop this event, stop executing any code
+                    // in this callback but continue to propagate
+                    return true;
+                }
 
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
-
-                window.clearTimeout(timeout);
-                $parent.addClass('open');
-                $this.trigger(showEvent);
+                openDropdown();
             });
 
             // handle submenus
@@ -96,6 +90,17 @@
                     }, settings.delay);
                 });
             });
+
+            function openDropdown() {
+                $allDropdowns.find(':focus').blur();
+
+                if(settings.instantlyCloseOthers === true)
+                    $allDropdowns.removeClass('open');
+
+                window.clearTimeout(timeout);
+                $parent.addClass('open');
+                $this.trigger(showEvent);
+            }
         });
     };
 
