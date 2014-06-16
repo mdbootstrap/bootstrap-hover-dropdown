@@ -93,6 +93,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2014-06-16** Added package to composer.
 * **2014-05-12** Fixed an issue where you could click a parent menu item to close it, but moving away from it would re-open the menu. Also cleaned up some code, removed some redundency.
 * **2014-01-27** Fixed an issue where chaining could break on mobile and cleaned up the the way the plugin triggered events. Also cleaned up the demo (fixed navbar appearance).
 * **2013-12-05** Change all references of *Twitter Bootstrap* to *Bootstrap* to reflect Bootstrap's name change.
