@@ -1,0 +1,25 @@
+{
+    "name": "components/bootstrap-hover-dropdown",
+    "type": "component",
+    "description": "An unofficial Bootstrap plugin to enable Bootstrap dropdowns to activate on hover and provide a nice user experience.",
+    "keywords": [],
+    "license": "The MIT License",
+    "authors": [
+        {
+            "name": "Mavrx",
+            "email": "cam@cameronspear.com"
+        }
+    ],
+    "require": {
+    },
+    "extra": {
+        "component": {
+            "name": "bootstrap-hover-dropdown",
+            "files": [
+                "bootstrap-hover-dropdown.js",
+                "bootstrap-hover-dropdown.min.js"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
