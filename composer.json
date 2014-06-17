@@ -18,7 +18,7 @@
   }],
   "require": {
     "components/jquery": "dev-master",
-    "twbs/bootstrap": "3.1.*@dev"
+    "components/bootstrap": "~3.1.1"
   },
   "extra": {
     "component": {
