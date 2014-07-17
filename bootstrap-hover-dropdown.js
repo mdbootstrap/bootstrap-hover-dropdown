@@ -1,15 +1,13 @@
 /**
+ * @preserve
  * Project: Bootstrap Hover Dropdown
  * Author: Cameron Spear
+ * Version: v2.0.10
  * Contributors: Mattia Larentis
- *
  * Dependencies: Bootstrap's Dropdown plugin, jQuery
- *
- * A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
- *
+ * Description: A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
  * License: MIT
- *
- * http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
+ * Homepage: http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
  */
 ;(function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
