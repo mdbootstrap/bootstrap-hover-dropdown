@@ -60,13 +60,17 @@
                     // in this callback but continue to propagate
                     return true;
                 }
-                window.clearTimeout(timeoutClose);
 
-                var isChildMenu = $parent.parents('.dropdown-menu').length;
+                var isChildMenu = $parent.parents('.dropdown-menu').length,
+                    siblingIsOpen = $parent.siblings().hasClass('open');
+
+                window.clearTimeout(timeoutClose);
 
                 timeoutOpen = window.setTimeout(function(){
                     openDropdown(event);
-                }, timeoutOpen > 0 || isChildMenu ? settings.delaySwitch : settings.delayOpen);
+                }, siblingIsOpen || isChildMenu ? settings.delaySwitch : settings.delayOpen);
+
+
 
             }, function () {
                 clearTimeout(timeoutOpen);
@@ -107,9 +111,6 @@
                     return true;
                 }
 
-                timeoutOpen = window.setTimeout(function(){
-                    openDropdown(event);
-                }, timeoutOpen > 0 ? 0 : settings.delayOpen);
             });
 
             // handle submenus
