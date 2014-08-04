@@ -135,10 +135,10 @@
                 if(settings.instantlyCloseOthers === true){
 
                     // not the first level
-                    if($this.parents('.dropdown-menu').length){
+                    if($this.parents('.dropdown-menu').length && $this.siblings().parent().hasClass('open')){
                         $this.siblings().parent().removeClass('open');
                     }else{
-                        $this.parent('li').siblings().removeClass('open')
+                        $this.parent('li').siblings().removeClass('open');
                     }
                 }
 
