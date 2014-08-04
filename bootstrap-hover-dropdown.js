@@ -31,11 +31,15 @@
             var $this = $(this),
                 $parent = $this.parent(),
                 defaults = {
-                    delay: 500,
+                    delayClose: 1000,
+                    delayOpen: 300,
+                    delaySwitch: 100,
                     instantlyCloseOthers: true
                 },
                 data = {
-                    delay: $(this).data('delay'),
+                    delayClose: $(this).data('delay-close'),
+                    delayOpen: $(this).data('delay-open'),
+                    delaySwitch: $(this).data('delay-switch'),
                     instantlyCloseOthers: $(this).data('close-others')
                 },
                 showEvent   = 'show.bs.dropdown',
@@ -43,9 +47,12 @@
                 // shownEvent  = 'shown.bs.dropdown',
                 // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
-                timeout;
+                timeoutOpen,
+                timeoutClose;
+
 
             $parent.hover(function (event) {
+
                 // so a neighbor can't open the dropdown
             	// FIX: see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
                 if($parent.hasClass('open') && !$this.is(event.target)) {
@@ -53,23 +60,40 @@
                     // in this callback but continue to propagate
                     return true;
                 }
-                window.clearTimeout(timeout);
-                openDropdown(event);
+                window.clearTimeout(timeoutClose);
+
+                var isChildMenu = $parent.parents('.dropdown-menu').length;
+
+                timeoutOpen = window.setTimeout(function(){
+                    openDropdown(event);
+                }, timeoutOpen > 0 || isChildMenu ? settings.delaySwitch : settings.delayOpen);
+
             }, function () {
-                timeout = window.setTimeout(function () {
+                clearTimeout(timeoutOpen);
+
+                var isChildMenu = $parent.parents('.dropdown-menu').length;
+
+                timeoutClose = window.setTimeout(function () {
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
-                }, settings.delay);
+                }, timeoutOpen && !isChildMenu ? settings.delayClose : settings.delaySwitch);
             });
             
             // clear timeout if hovering submenu
             $allDropdowns.find('.dropdown-menu').hover(function(){
-            	window.clearTimeout(timeout);
+            	window.clearTimeout(timeoutClose);
             }, function(){
-            	timeout = window.setTimeout(function () {
+
+                var isChildMenu = $(this).parents('.dropdown-menu').length;
+
+                if(isChildMenu){
+                    return true;
+                }
+
+                timeoutClose = window.setTimeout(function () {
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
-                }, settings.delay);
+                }, timeoutOpen > 0 ? settings.delayClose : 0);
             });
             
             
@@ -83,7 +107,9 @@
                     return true;
                 }
 
-                openDropdown(event);
+                timeoutOpen = window.setTimeout(function(){
+                    openDropdown(event);
+                }, timeoutOpen > 0 ? 0 : settings.delayOpen);
             });
 
             // handle submenus
@@ -99,17 +125,25 @@
                     var $submenu = $this.children('.dropdown-menu');
                     subTimeout = window.setTimeout(function () {
                         $submenu.hide();
-                    }, settings.delay);
+                    }, timeoutOpen > 0 ? settings.delayClose : 0);
                 });
             });
 
             function openDropdown(event) {
                 $allDropdowns.find(':focus').blur();
 
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
+                if(settings.instantlyCloseOthers === true){
 
-                window.clearTimeout(timeout);
+                    // not the first level
+                    if($this.parents('.dropdown-menu').length){
+                        $this.siblings().parent().removeClass('open');
+                    }else{
+                        $this.parent('li').siblings().removeClass('open')
+                    }
+                }
+
+
+                window.clearTimeout(timeoutClose);
                 $parent.addClass('open');
                 $this.trigger(showEvent);
             }
