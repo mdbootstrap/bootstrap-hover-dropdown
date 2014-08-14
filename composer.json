@@ -17,8 +17,8 @@
     "role": "Developer"
   }],
   "require": {
-    "components/jquery": "dev-master",
-    "components/bootstrap": "dev-master"
+    "components/jquery": ">=1.9",
+    "components/bootstrap": "~3.0"
   },
   "extra": {
     "component": {
@@ -27,6 +27,5 @@
         "bootstrap-hover-dropdown.js"
       ]
     }
-  },
-  "minimum-stability": "dev"
+  }
 }
