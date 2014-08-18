@@ -30,7 +30,8 @@
                 $parent = $this.parent(),
                 defaults = {
                     delay: 500,
-                    instantlyCloseOthers: true
+                    instantlyCloseOthers: true,
+					navBreakpoint: 768
                 },
                 data = {
                     delay: $(this).data('delay'),
@@ -90,6 +91,10 @@
             });
 
             function openDropdown(event) {
+				if ( ($( window ).width() < settings.navBreakpoint ) && ($this.parents('.navbar-collapse').length) ){//prevent acting on navbar in collapsed mode
+					return;
+				}
+				
                 $allDropdowns.find(':focus').blur();
 
                 if(settings.instantlyCloseOthers === true)
