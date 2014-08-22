@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-hover-dropdown",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "An unofficial Bootstrap plugin to enable Bootstrap dropdowns to activate on hover and provide a nice user experience.",
   "main": "./bootstrap-hover-dropdown.js",
   "keywords": [
