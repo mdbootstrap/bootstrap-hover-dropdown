@@ -12,7 +12,8 @@
 ;(function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
-    var $allDropdowns = $();
+    var $allDropdowns = $(),
+        hoverIntentAvailable = ($.fn.hoverIntent !== 'undefined');
 
     // if instantlyCloseOthers is true, then it will instantly
     // shut other nav items when a new one is hovered over
@@ -30,7 +31,8 @@
                 $parent = $this.parent(),
                 defaults = {
                     delay: 500,
-                    instantlyCloseOthers: true
+                    instantlyCloseOthers: true,
+                    hoverIntent: hoverIntentAvailable
                 },
                 data = {
                     delay: $(this).data('delay'),
@@ -42,6 +44,10 @@
                 // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout;
+                        
+            if (hoverIntentAvailable && settings.hoverIntent !== "false") {
+                $.fn.hover = $.fn.hoverIntent;
+            }
 
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
