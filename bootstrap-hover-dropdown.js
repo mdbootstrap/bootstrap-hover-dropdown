@@ -30,8 +30,7 @@
                 $parent = $this.parent(),
                 defaults = {
                     delay: 500,
-                    instantlyCloseOthers: true,
-                    navBreakpoint: 768
+                    instantlyCloseOthers: true
                 },
                 data = {
                     delay: $(this).data('delay'),
@@ -54,6 +53,7 @@
 
                 openDropdown(event);
             }, function () {
+                if ( isCollapsed ){ return; }
                 timeout = window.setTimeout(function () {
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
@@ -91,9 +91,7 @@
             });
 
             function openDropdown(event) {
-                if ( ($( window ).width() < settings.navBreakpoint ) && ($this.parents('.navbar-collapse').length) ){//prevent acting on navbar in collapsed mode
-                    return;
-                }
+                if ( isCollapsed ){ return; }
 				
                 $allDropdowns.find(':focus').blur();
 
@@ -103,6 +101,12 @@
                 window.clearTimeout(timeout);
                 $parent.addClass('open');
                 $this.trigger(showEvent);
+            }
+
+            function isCollapsed() {
+                if ( ($(".navbar-toggle").filter(":visible").length ) && ($this.parents('.navbar-collapse').length) ){//prevent acting on navbar in collapsed mode
+                    return true;
+                }
             }
         });
     };
