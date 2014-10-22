@@ -53,7 +53,7 @@
 
                 openDropdown(event);
             }, function () {
-                if ( isCollapsed ){ return; }
+                if ( isCollapsed() ){ return; }
                 timeout = window.setTimeout(function () {
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
@@ -91,7 +91,7 @@
             });
 
             function openDropdown(event) {
-                if ( isCollapsed ){ return; }
+                if ( isCollapsed() ){ return; }
 				
                 $allDropdowns.find(':focus').blur();
 
