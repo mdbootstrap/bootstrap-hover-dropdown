@@ -44,6 +44,8 @@
                 timeout;
 
             $parent.hover(function (event) {
+                window.clearTimeout(timeout);
+
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
@@ -61,6 +63,8 @@
 
             // this helps with button groups!
             $this.hover(function (event) {
+                window.clearTimeout(timeout);
+
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
                 if(!$parent.hasClass('open') && !$parent.is(event.target)) {
@@ -95,7 +99,6 @@
                 if(settings.instantlyCloseOthers === true)
                     $allDropdowns.removeClass('open');
 
-                window.clearTimeout(timeout);
                 $parent.addClass('open');
                 $this.trigger(showEvent);
             }
