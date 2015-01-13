@@ -54,6 +54,7 @@
                 openDropdown(event);
             }, function () {
                 timeout = window.setTimeout(function () {
+                    $this.attr('aria-expanded', 'false');
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
                 }, settings.delay);
@@ -96,6 +97,7 @@
                     $allDropdowns.removeClass('open');
 
                 window.clearTimeout(timeout);
+                $this.attr('aria-expanded', 'true');
                 $parent.addClass('open');
                 $this.trigger(showEvent);
             }
