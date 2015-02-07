@@ -82,11 +82,13 @@
                     $this.children('.dropdown-menu').show();
                     // always close submenu siblings instantly
                     $this.siblings().children('.dropdown-menu').hide();
+                    $this.addClass('open');
                 }, function () {
                     var $submenu = $this.children('.dropdown-menu');
                     subTimeout = window.setTimeout(function () {
                         $submenu.hide();
                     }, settings.delay);
+                    $this.removeClass('open');
                 });
             });
 
