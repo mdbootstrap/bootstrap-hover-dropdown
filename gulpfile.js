@@ -53,6 +53,6 @@ function increment(importance) {
         .pipe(tagVersion());
 }
  
-gulp.task('patch',   function() { return increment('patch'); });
-gulp.task('feature', function() { return increment('minor'); });
-gulp.task('release', function() { return increment('major'); });
+gulp.task('patch',   ['default'], function() { return increment('patch'); });
+gulp.task('feature', ['default'], function() { return increment('minor'); });
+gulp.task('release', ['default'], function() { return increment('major'); });
