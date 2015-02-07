@@ -44,7 +44,7 @@ function increment(importance) {
         .pipe(gulp.dest('.'))
 
         // commit the changed version number 
-        .pipe(git.commit('bump packages version'))
+        .pipe(git.commit('bump packages\' version'))
  
         // read only one file to get the version number 
         .pipe(filter('package.json'))
