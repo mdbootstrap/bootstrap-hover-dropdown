@@ -1,6 +1,6 @@
 {
   "name": "cwspear/bootstrap-hover-dropdown",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "type": "component",
   "description": "An unofficial Bootstrap plugin to enable Bootstrap dropdowns to activate on hover and provide a nice user experience.",
   "keywords": [
