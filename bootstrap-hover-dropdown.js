@@ -53,6 +53,7 @@
 
                 openDropdown(event);
             }, function () {
+                if ( isCollapsed() ){ return; }
                 timeout = window.setTimeout(function () {
                     $this.attr('aria-expanded', 'false');
                     $parent.removeClass('open');
@@ -91,6 +92,8 @@
             });
 
             function openDropdown(event) {
+                if ( isCollapsed() ){ return; }
+				
                 $allDropdowns.find(':focus').blur();
 
                 if(settings.instantlyCloseOthers === true)
@@ -100,6 +103,12 @@
                 $this.attr('aria-expanded', 'true');
                 $parent.addClass('open');
                 $this.trigger(showEvent);
+            }
+
+            function isCollapsed() {
+                if ( ($(".navbar-toggle").filter(":visible").length ) && ($this.parents('.navbar-collapse').length) ){//prevent acting on navbar in collapsed mode
+                    return true;
+                }
             }
         });
     };
