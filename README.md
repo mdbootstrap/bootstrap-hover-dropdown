@@ -95,8 +95,8 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
 * **2015-02-07** *[v2.1.2]* Forgot to minify the last couple updates...
-* **2015-02-07** *[v2.1.1]* Merged another PR: `browserify` compatibility (bootstrap-hover-dropdown/#100).
-* **2015-02-07** *[v2.1.0]* Merged a couple PRs: ARIA support (bootstrap-hover-dropdown/#95) and hover delay support (bootstrap-hover-dropdown/#99).
+* **2015-02-07** *[v2.1.1]* Merged another PR: `browserify` compatibility [#100](bootstrap-hover-dropdown/#100).
+* **2015-02-07** *[v2.1.0]* Merged a couple PRs: ARIA support [#95](bootstrap-hover-dropdown/#95) and hover delay support [#99](bootstrap-hover-dropdown/#99).
 * **2014-06-16** Added package to composer.
 * **2014-05-12** Fixed an issue where you could click a parent menu item to close it, but moving away from it would re-open the menu. Also cleaned up some code, removed some redundency.
 * **2014-01-27** Fixed an issue where chaining could break on mobile and cleaned up the the way the plugin triggered events. Also cleaned up the demo (fixed navbar appearance).
@@ -113,11 +113,11 @@ I'm a slacker and only started keeping track of changes/bug fixes starting in Ma
 
 ## Contributions
 
-Thanks to all of you who have contributed to this project, whether by code or by filing an issue to help improve it. But of course, especially the [ones that contribute code](bootstrap-hover-dropdown/graphs/contributors) =)
+Thanks to all of you who have contributed to this project, whether by code or by filing an issue to help improve it. But of course, especially the [ones that contribute code](https://github.com/CWSpear/bootstrap-hover-dropdown/graphs/contributors) =)
 
 A special thanks to [Mattia Larentis](https://github.com/nostalgiaz). He isn't in the contributor list, but he helped me with the idea for the data-attributes and doing the options via an object.
 
-I will also issue a very special thanks in the README for help with setting up a (testing suite)[bootstrap-hover-dropdown/#69]!
+I will also issue a very special thanks in the README for help with setting up a [testing suite](bootstrap-hover-dropdown/#69)!
 
 ## Roadmap
 
