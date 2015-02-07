@@ -30,10 +30,12 @@
                 $parent = $this.parent(),
                 defaults = {
                     delay: 500,
+                    hoverDelay: 0,
                     instantlyCloseOthers: true
                 },
                 data = {
                     delay: $(this).data('delay'),
+                    hoverDelay: $(this).data('hover-delay'),
                     instantlyCloseOthers: $(this).data('close-others')
                 },
                 showEvent   = 'show.bs.dropdown',
@@ -41,7 +43,7 @@
                 // shownEvent  = 'shown.bs.dropdown',
                 // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
-                timeout;
+                timeout, timeoutHover;
 
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
@@ -53,6 +55,8 @@
 
                 openDropdown(event);
             }, function () {
+                // clear timer for hover event
+                window.clearTimeout(timeoutHover)
                 timeout = window.setTimeout(function () {
                     $this.attr('aria-expanded', 'false');
                     $parent.removeClass('open');
@@ -91,15 +95,24 @@
             });
 
             function openDropdown(event) {
-                $allDropdowns.find(':focus').blur();
-
-                if(settings.instantlyCloseOthers === true)
-                    $allDropdowns.removeClass('open');
-
+                // clear dropdown timeout here so it doesnt close before it should
                 window.clearTimeout(timeout);
-                $this.attr('aria-expanded', 'true');
-                $parent.addClass('open');
-                $this.trigger(showEvent);
+                // restart hover timer
+                window.clearTimeout(timeoutHover);
+                
+                // delay for hover event.  
+                timeoutHover = window.setTimeout(function () {
+                    $allDropdowns.find(':focus').blur();
+
+                    if(settings.instantlyCloseOthers === true)
+                        $allDropdowns.removeClass('open');
+                    
+                    // clear timer for hover event
+                    window.clearTimeout(timeoutHover);
+                    $this.attr('aria-expanded', 'true');
+                    $parent.addClass('open');
+                    $this.trigger(showEvent);
+                }, settings.hoverDelay);
             }
         });
     };
