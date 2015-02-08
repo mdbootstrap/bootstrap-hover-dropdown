@@ -48,14 +48,14 @@ function increment(importance) {
         // save it back to filesystem 
         .pipe(gulp.dest('.'))
 
-        // // commit the changed version number 
-        // .pipe(git.commit('bump packages\' version'))
+        // commit the changed version number 
+        .pipe(git.commit('bump packages\' version'))
  
-        // // read only one file to get the version number 
-        // .pipe(filter('bower.json'))
+        // read only one file to get the version number 
+        .pipe(filter('bower.json'))
 
-        // // **tag it in the repository** 
-        // .pipe(tagVersion())
+        // **tag it in the repository** 
+        .pipe(tagVersion())
 
         .on('end', function () {
             var newVersion = JSON.parse(fs.readFileSync('bower.json')).version;
