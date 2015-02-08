@@ -48,22 +48,24 @@ function increment(importance) {
         // save it back to filesystem 
         .pipe(gulp.dest('.'))
 
-        // commit the changed version number 
-        .pipe(git.commit('bump packages\' version'))
- 
-        // read only one file to get the version number 
-        .pipe(filter('bower.json'))
-
-        // **tag it in the repository** 
-        .pipe(tagVersion())
-
         .on('end', function () {
             var newVersion = JSON.parse(fs.readFileSync('bower.json')).version;
             
             gulp.src(['bootstrap-hover-dropdown.js', 'bootstrap-hover-dropdown.min.js'])
                 // replace version # in the JS files
                 .pipe(replace('Version: v' + currentVersion, 'Version: v' + newVersion))
-                .pipe(gulp.dest('.'));
+
+                // save it back to filesystem 
+                .pipe(gulp.dest('.'))
+
+                // commit the changed version number 
+                .pipe(git.commit('bump packages\' version'))
+                
+                // read only one file to get the version number 
+                .pipe(filter('bower.json'))
+
+                // **tag it in the repository** 
+                .pipe(tagVersion());
         });
 }
  
