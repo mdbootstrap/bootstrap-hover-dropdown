@@ -17,12 +17,13 @@ gulp.task('default', function() {
 });
 
 
-var fs         = require('fs');
-var bump       = require('gulp-bump');
-var filter     = require('gulp-filter');
-var git        = require('gulp-git');
-var tagVersion = require('gulp-tag-version');
-var replace    = require('gulp-replace');
+var fs          = require('fs');
+var bump        = require('gulp-bump');
+var filter      = require('gulp-filter');
+var git         = require('gulp-git');
+var tagVersion  = require('gulp-tag-version');
+var replace     = require('gulp-replace');
+var streamqueue = require('streamqueue');
  
 /**
  * Bumping version number and tagging the repository with it.
@@ -38,10 +39,12 @@ var replace    = require('gulp-replace');
  * introduced a feature or made a backwards-incompatible release.
  */
 function increment(importance) {
+    var packages = ['package.json', 'bower.json', 'composer.json'];
     var currentVersion = JSON.parse(fs.readFileSync('bower.json')).version;
 
     // get all the files to bump version in 
-    gulp.src(['package.json', 'bower.json', 'composer.json'])
+    gulp.src(packages)
+
         // bump the version number in those files 
         .pipe(bump({ type: importance }))
 
@@ -50,19 +53,25 @@ function increment(importance) {
 
         .on('end', function () {
             var newVersion = JSON.parse(fs.readFileSync('bower.json')).version;
+
+            var packagesStream = gulp.src(packages);
             
-            gulp.src(['bootstrap-hover-dropdown.js', 'bootstrap-hover-dropdown.min.js'])
+            var jsStream = gulp.src(['bootstrap-hover-dropdown.js', 'bootstrap-hover-dropdown.min.js'])
+
                 // replace version # in the JS files
                 .pipe(replace('Version: v' + currentVersion, 'Version: v' + newVersion))
 
                 // save it back to filesystem 
-                .pipe(gulp.dest('.'))
+                .pipe(gulp.dest('.'));
+
+            // merge the streams together to commit
+            streamqueue({ objectMode: true }, jsStream, packagesStream)
 
                 // commit the changed version number 
                 .pipe(git.commit('bump packages\' version'))
                 
                 // read only one file to get the version number 
-                .pipe(filter('bower.json'))
+                .pipe(filter('packages.json'))
 
                 // **tag it in the repository** 
                 .pipe(tagVersion());
