@@ -74,7 +74,13 @@ function increment(importance) {
                 .pipe(filter('package.json'))
 
                 // **tag it in the repository** 
-                .pipe(tagVersion());
+                .pipe(tagVersion())
+
+                // run npm publish
+                .on('end', function () {
+                    var spawn = require('child_process').spawn;
+                    spawn('npm', ['publish'], { stdio: 'inherit' });
+                });
         });
 }
  
