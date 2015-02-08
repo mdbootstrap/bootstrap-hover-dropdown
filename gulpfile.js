@@ -71,7 +71,7 @@ function increment(importance) {
                 .pipe(git.commit('bump packages\' version'))
                 
                 // read only one file to get the version number 
-                .pipe(filter('packages.json'))
+                .pipe(filter('package.json'))
 
                 // **tag it in the repository** 
                 .pipe(tagVersion());
