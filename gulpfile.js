@@ -3,7 +3,8 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
  
 gulp.task('default', function() {
-    gulp.src('bootstrap-hover-dropdown.js')
+    return gulp.src('bootstrap-hover-dropdown.js')
+
         // minifiy preserving preserved comments
         .pipe(uglify({
             preserveComments: 'some'
@@ -16,10 +17,12 @@ gulp.task('default', function() {
 });
 
 
-var bump = require('gulp-bump');
-var filter = require('gulp-filter');
-var git = require('gulp-git');
+var fs         = require('fs');
+var bump       = require('gulp-bump');
+var filter     = require('gulp-filter');
+var git        = require('gulp-git');
 var tagVersion = require('gulp-tag-version');
+var replace    = require('gulp-replace');
  
 /**
  * Bumping version number and tagging the repository with it.
@@ -35,22 +38,33 @@ var tagVersion = require('gulp-tag-version');
  * introduced a feature or made a backwards-incompatible release.
  */
 function increment(importance) {
+    var currentVersion = JSON.parse(fs.readFileSync('bower.json')).version;
+
     // get all the files to bump version in 
-    return gulp.src(['package.json', 'bower.json', 'composer.json'])
+    gulp.src(['package.json', 'bower.json', 'composer.json'])
         // bump the version number in those files 
         .pipe(bump({ type: importance }))
 
         // save it back to filesystem 
         .pipe(gulp.dest('.'))
 
-        // commit the changed version number 
-        .pipe(git.commit('bump packages\' version'))
+        // // commit the changed version number 
+        // .pipe(git.commit('bump packages\' version'))
  
-        // read only one file to get the version number 
-        .pipe(filter('package.json'))
+        // // read only one file to get the version number 
+        // .pipe(filter('bower.json'))
 
-        // **tag it in the repository** 
-        .pipe(tagVersion());
+        // // **tag it in the repository** 
+        // .pipe(tagVersion())
+
+        .on('end', function () {
+            var newVersion = JSON.parse(fs.readFileSync('bower.json')).version;
+            
+            gulp.src(['bootstrap-hover-dropdown.js', 'bootstrap-hover-dropdown.min.js'])
+                // replace version # in the JS files
+                .pipe(replace('Version: v' + currentVersion, 'Version: v' + newVersion))
+                .pipe(gulp.dest('.'));
+        });
 }
  
 gulp.task('patch',   ['default'], function() { return increment('patch'); });

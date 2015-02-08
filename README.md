@@ -94,6 +94,7 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2015-02-07** *[v2.1.3]* Update version in JS files
 * **2015-02-07** *[v2.1.2]* Forgot to minify the last couple updates...
 * **2015-02-07** *[v2.1.1]* Merged another PR: `browserify` compatibility [#100](/../../issues/100).
 * **2015-02-07** *[v2.1.0]* Merged a couple PRs: ARIA support [#95](/../../issues/95) and hover delay support [#99](/../../issues/99).
