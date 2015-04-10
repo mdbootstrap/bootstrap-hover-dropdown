@@ -59,8 +59,8 @@
                 window.clearTimeout(timeoutHover)
                 timeout = window.setTimeout(function () {
                     $this.attr('aria-expanded', 'false');
-                    $parent.removeClass('open');
                     $this.trigger(hideEvent);
+                    $parent.removeClass('open');
                 }, settings.delay);
             });
 
@@ -110,8 +110,7 @@
                     // clear timer for hover event
                     window.clearTimeout(timeoutHover);
                     $this.attr('aria-expanded', 'true');
-                    $parent.addClass('open');
-                    $this.trigger(showEvent);
+                    $this.trigger(showEvent);                    $parent.addClass('open');
                 }, settings.hoverDelay);
             }
         });
