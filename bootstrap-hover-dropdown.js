@@ -3,7 +3,6 @@
  * Project: Bootstrap Hover Dropdown
  * Author: Cameron Spear
  * Version: v2.1.3
- * Contributors: Mattia Larentis
  * Dependencies: Bootstrap's Dropdown plugin, jQuery
  * Description: A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
  * License: MIT
@@ -17,9 +16,8 @@
     // if instantlyCloseOthers is true, then it will instantly
     // shut other nav items when a new one is hovered over
     $.fn.dropdownHover = function (options) {
-        // don't do anything if touch is supported
-        // (plugin causes some issues on mobile)
-        if('ontouchstart' in document) return this; // don't want to affect chaining
+        // this disabled touch actions on the elements so we can hook into Pointer Events
+        this.attr('touch-action', 'pan-y');
 
         // the element we really care about
         // is the dropdown-toggle's parent
@@ -45,7 +43,8 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout, timeoutHover;
 
-            $parent.hover(function (event) {
+            $parent.on('pointerenter', function (event) {
+                if (isPointerTouchEvent(event)) return;
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
@@ -54,9 +53,10 @@
                 }
 
                 openDropdown(event);
-            }, function () {
+            }).on('pointerleave', function (event) {
+                if (isPointerTouchEvent(event)) return;
                 // clear timer for hover event
-                window.clearTimeout(timeoutHover)
+                window.clearTimeout(timeoutHover);
                 timeout = window.setTimeout(function () {
                     $this.attr('aria-expanded', 'false');
                     $parent.removeClass('open');
@@ -65,7 +65,8 @@
             });
 
             // this helps with button groups!
-            $this.hover(function (event) {
+            $this.on('pointerenter', function (event) {
+                if (isPointerTouchEvent(event)) return;
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
                 if(!$parent.hasClass('open') && !$parent.is(event.target)) {
@@ -81,12 +82,14 @@
             $parent.find('.dropdown-submenu').each(function (){
                 var $this = $(this);
                 var subTimeout;
-                $this.hover(function () {
+                $this.on('pointerenter', function (event) {
+                    if (isPointerTouchEvent(event)) return;
                     window.clearTimeout(subTimeout);
                     $this.children('.dropdown-menu').show();
                     // always close submenu siblings instantly
                     $this.siblings().children('.dropdown-menu').hide();
-                }, function () {
+                }).on('pointerleave', function (event) {
+                    if (isPointerTouchEvent(event)) return;
                     var $submenu = $this.children('.dropdown-menu');
                     subTimeout = window.setTimeout(function () {
                         $submenu.hide();
@@ -104,8 +107,9 @@
                 timeoutHover = window.setTimeout(function () {
                     $allDropdowns.find(':focus').blur();
 
-                    if(settings.instantlyCloseOthers === true)
+                    if(settings.instantlyCloseOthers === true) {
                         $allDropdowns.removeClass('open');
+                    }
                     
                     // clear timer for hover event
                     window.clearTimeout(timeoutHover);
@@ -113,6 +117,14 @@
                     $parent.addClass('open');
                     $this.trigger(showEvent);
                 }, settings.hoverDelay);
+            }
+
+            function isPointerTouchEvent(event) {
+                // need to get the originalEvent if jQuery was used to bind the event
+                event = event.originalEvent || event;
+                // I'm not sure we need to check for falsey pointerTypes or if it will cause issues...
+                // In my testing, I found it sometimes be empty when I expected touch, but it was inconsistent
+                return !event.pointerType || event.pointerType === 'touch';
             }
         });
     };
