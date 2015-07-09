@@ -46,6 +46,8 @@
                 timeout, timeoutHover;
 
             $parent.hover(function (event) {
+                // get correct target element
+                var target = ($(event.target).data('hover') ? $(event.target) : $(event.target).closest('[data-hover="dropdown"]'));
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
