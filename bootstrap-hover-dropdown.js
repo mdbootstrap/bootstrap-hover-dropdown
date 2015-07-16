@@ -12,6 +12,9 @@
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
+    var baseEvent = hasPointerEvents() ? 'pointer' : 'mouse';
+
+    console.log('baseEvent', baseEvent);
 
     // if instantlyCloseOthers is true, then it will instantly
     // shut other nav items when a new one is hovered over
@@ -43,7 +46,7 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout, timeoutHover;
 
-            $parent.on('pointerenter', function (event) {
+            $parent.on(baseEvent + 'enter', function (event) {
                 if (isPointerTouchEvent(event)) return;
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
@@ -53,7 +56,7 @@
                 }
 
                 openDropdown(event);
-            }).on('pointerleave', function (event) {
+            }).on(baseEvent + 'leave', function (event) {
                 if (isPointerTouchEvent(event)) return;
                 // clear timer for hover event
                 window.clearTimeout(timeoutHover);
@@ -65,7 +68,7 @@
             });
 
             // this helps with button groups!
-            $this.on('pointerenter', function (event) {
+            $this.on(baseEvent + 'enter', function (event) {
                 if (isPointerTouchEvent(event)) return;
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
@@ -82,13 +85,13 @@
             $parent.find('.dropdown-submenu').each(function (){
                 var $this = $(this);
                 var subTimeout;
-                $this.on('pointerenter', function (event) {
+                $this.on(baseEvent + 'enter', function (event) {
                     if (isPointerTouchEvent(event)) return;
                     window.clearTimeout(subTimeout);
                     $this.children('.dropdown-menu').show();
                     // always close submenu siblings instantly
                     $this.siblings().children('.dropdown-menu').hide();
-                }).on('pointerleave', function (event) {
+                }).on(baseEvent + 'leave', function (event) {
                     if (isPointerTouchEvent(event)) return;
                     var $submenu = $this.children('.dropdown-menu');
                     subTimeout = window.setTimeout(function () {
@@ -102,15 +105,15 @@
                 window.clearTimeout(timeout);
                 // restart hover timer
                 window.clearTimeout(timeoutHover);
-                
-                // delay for hover event.  
+
+                // delay for hover event.
                 timeoutHover = window.setTimeout(function () {
                     $allDropdowns.find(':focus').blur();
 
                     if(settings.instantlyCloseOthers === true) {
                         $allDropdowns.removeClass('open');
                     }
-                    
+
                     // clear timer for hover event
                     window.clearTimeout(timeoutHover);
                     $this.attr('aria-expanded', 'true');
@@ -120,6 +123,10 @@
             }
 
             function isPointerTouchEvent(event) {
+                if (baseEvent === 'mouse') {
+                    return false;
+                }
+
                 // need to get the originalEvent if jQuery was used to bind the event
                 event = event.originalEvent || event;
                 // I'm not sure we need to check for falsey pointerTypes or if it will cause issues...
