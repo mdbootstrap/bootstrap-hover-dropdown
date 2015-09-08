@@ -278,6 +278,87 @@
           </div>
         </div>
       </div> <!-- .tabs-example -->
+
+      <h3>Don't show menu when user just move cursor over</h3>
+      <p>You can use alternate eventType handler, for example <code>data-event-type="hoverIntent"</code>. It will prevent accidentally menu show when you just move your mouse over and don't really want anything to appear.</p>
+
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Button <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Primary <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Danger <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Warning <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Success <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Info <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+        <div class="btn-group">
+          <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-event-type="hoverIntent">Default <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div> <!-- .btn-group -->
+      </div> <!-- .btn-toolbar -->
+      <br />
+      <p>Note that you should include jquery.hoverintent.js from <a href="https://github.com/briancherne/jquery-hoverIntent">https://github.com/briancherne/jquery-hoverIntent</a>.</p>
+
+      <div style="margin-bottom: 400px;"><!-- some space below --></div>
+
     </div> <!-- .span12 -->
   </div> <!-- .container -->
 
@@ -285,6 +366,7 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
+  <script src="http://cherne.net/brian/resources/jquery.hoverIntent.js"></script>
 
   <script>
     // very simple to use!
