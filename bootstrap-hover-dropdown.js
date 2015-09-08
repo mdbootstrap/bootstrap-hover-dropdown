@@ -31,12 +31,14 @@
                 defaults = {
                     delay: 500,
                     hoverDelay: 0,
-                    instantlyCloseOthers: true
+                    instantlyCloseOthers: true,
+                    eventType: 'hover'
                 },
                 data = {
                     delay: $(this).data('delay'),
                     hoverDelay: $(this).data('hover-delay'),
-                    instantlyCloseOthers: $(this).data('close-others')
+                    instantlyCloseOthers: $(this).data('close-others'),
+                    eventType: $(this).data('event-type')
                 },
                 showEvent   = 'show.bs.dropdown',
                 hideEvent   = 'hide.bs.dropdown',
@@ -45,7 +47,7 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout, timeoutHover;
 
-            $parent.hover(function (event) {
+            $parent[settings.eventType](function (event) {
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
@@ -65,7 +67,7 @@
             });
 
             // this helps with button groups!
-            $this.hover(function (event) {
+            $this[settings.eventType](function (event) {
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
                 if(!$parent.hasClass('open') && !$parent.is(event.target)) {
@@ -81,7 +83,7 @@
             $parent.find('.dropdown-submenu').each(function (){
                 var $this = $(this);
                 var subTimeout;
-                $this.hover(function () {
+                $this[settings.eventType](function () {
                     window.clearTimeout(subTimeout);
                     $this.children('.dropdown-menu').show();
                     // always close submenu siblings instantly
