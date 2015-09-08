@@ -79,6 +79,7 @@ This also works with submenus without any other configuring since Bootstrap alre
 * **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
 * **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is `true`.
 * **hoverDelay**: *(optional)* A delay *before opening* in miliseconds. Some people argue this improves user experience as it decreases the number of accidental menu openings. Defaults to `0`.
+* **eventType**: *(optional)* Hover event type. Allows to override default .hover() handler with something else, for example with a https://github.com/briancherne/jquery-hoverIntent
 
 ## Demo
 
