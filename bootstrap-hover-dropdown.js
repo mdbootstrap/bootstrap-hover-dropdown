@@ -95,6 +95,12 @@
             });
 
             function openDropdown(event) {
+                if($this.parents(".navbar").find(".navbar-toggle").is(":visible")) {
+                    // If we're inside a navbar, don't do anything when the
+                    // navbar is collapsed, as it makes the navbar pretty unusable.
+                    return;
+                }
+
                 // clear dropdown timeout here so it doesnt close before it should
                 window.clearTimeout(timeout);
                 // restart hover timer
