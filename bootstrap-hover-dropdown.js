@@ -9,7 +9,7 @@
  * License: MIT
  * Homepage: http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
  */
-;(function ($, window, undefined) {
+; (function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -19,7 +19,7 @@
     $.fn.dropdownHover = function (options) {
         // don't do anything if touch is supported
         // (plugin causes some issues on mobile)
-        if('ontouchstart' in document) return this; // don't want to affect chaining
+        if ('ontouchstart' in document) return this; // don't want to affect chaining
 
         // the element we really care about
         // is the dropdown-toggle's parent
@@ -31,15 +31,17 @@
                 defaults = {
                     delay: 500,
                     hoverDelay: 0,
-                    instantlyCloseOthers: true
+                    instantlyCloseOthers: true,
+                    extraHover: ""
                 },
                 data = {
                     delay: $(this).data('delay'),
                     hoverDelay: $(this).data('hover-delay'),
-                    instantlyCloseOthers: $(this).data('close-others')
+                    instantlyCloseOthers: $(this).data('close-others'),
+                    extraHover: $(this).data('extra-hover')
                 },
-                showEvent   = 'show.bs.dropdown',
-                hideEvent   = 'hide.bs.dropdown',
+                showEvent = 'show.bs.dropdown',
+                hideEvent = 'hide.bs.dropdown',
                 // shownEvent  = 'shown.bs.dropdown',
                 // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
@@ -47,7 +49,7 @@
 
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
-                if(!$parent.hasClass('open') && !$this.is(event.target)) {
+                if (!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
                     // in this callback but continue to propagate
                     return true;
@@ -68,7 +70,7 @@
             $this.hover(function (event) {
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
-                if(!$parent.hasClass('open') && !$parent.is(event.target)) {
+                if (!$parent.hasClass('open') && !$parent.is(event.target)) {
                     // stop this event, stop executing any code
                     // in this callback but continue to propagate
                     return true;
@@ -77,8 +79,20 @@
                 openDropdown(event);
             });
 
+            // reset timer on hovering extra hover elements
+            if (settings.extraHover.length > 0) {
+                $(settings.extraHover).hover(function () {
+                    window.clearTimeout(timeout);
+                }, function () {
+                    var $submenu = $this.children('.dropdown-menu');
+                    timeout = window.setTimeout(function () {
+                        $submenu.hide();
+                    }, settings.delay);
+                });
+            }
+
             // handle submenus
-            $parent.find('.dropdown-submenu').each(function (){
+            $parent.find('.dropdown-submenu').each(function () {
                 var $this = $(this);
                 var subTimeout;
                 $this.hover(function () {
@@ -95,7 +109,7 @@
             });
 
             function openDropdown(event) {
-                if($this.parents(".navbar").find(".navbar-toggle").is(":visible")) {
+                if ($this.parents(".navbar").find(".navbar-toggle").is(":visible")) {
                     // If we're inside a navbar, don't do anything when the
                     // navbar is collapsed, as it makes the navbar pretty unusable.
                     return;
@@ -105,14 +119,14 @@
                 window.clearTimeout(timeout);
                 // restart hover timer
                 window.clearTimeout(timeoutHover);
-                
+
                 // delay for hover event.  
                 timeoutHover = window.setTimeout(function () {
                     $allDropdowns.find(':focus').blur();
 
-                    if(settings.instantlyCloseOthers === true)
+                    if (settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
-                    
+
                     // clear timer for hover event
                     window.clearTimeout(timeoutHover);
                     $this.attr('aria-expanded', 'true');
