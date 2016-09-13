@@ -1,6 +1,8 @@
 Bootstrap Hover Dropdown Plugin
 ===============================
 
+[![Join the chat at https://gitter.im/CWSpear/bootstrap-hover-dropdown](https://badges.gitter.im/CWSpear/bootstrap-hover-dropdown.svg)](https://gitter.im/CWSpear/bootstrap-hover-dropdown?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![Current Version](http://img.shields.io/github/tag/cwspear/bootstrap-hover-dropdown.svg?style=flat)
 
 #### Name Change
