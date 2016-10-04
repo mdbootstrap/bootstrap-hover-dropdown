@@ -47,7 +47,7 @@
 
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
-                if(!$parent.hasClass('open') && !$this.is(event.target)) {
+                if(!$parent.hasClass('open') && !$this.is(event.target) || $this.is('.disabled, :disabled')) {
                     // stop this event, stop executing any code
                     // in this callback but continue to propagate
                     return true;
@@ -68,7 +68,7 @@
             $this.hover(function (event) {
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
-                if(!$parent.hasClass('open') && !$parent.is(event.target)) {
+                if(!$parent.hasClass('open') && !$parent.is(event.target) || $this.is('.disabled, :disabled')) {
                     // stop this event, stop executing any code
                     // in this callback but continue to propagate
                     return true;
