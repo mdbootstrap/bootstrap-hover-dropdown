@@ -110,8 +110,10 @@
                 timeoutHover = window.setTimeout(function () {
                     $allDropdowns.find(':focus').blur();
 
-                    if(settings.instantlyCloseOthers === true)
+                    if(settings.instantlyCloseOthers === true) {
                         $allDropdowns.removeClass('open');
+                        $allDropdowns.children('a').attr('aria-expanded', 'false');
+                    }
                     
                     // clear timer for hover event
                     window.clearTimeout(timeoutHover);
