@@ -12,6 +12,7 @@
     "gulp-filter": "^2.0.0",
     "gulp-git": "^0.5.6",
     "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.4",
     "gulp-tag-version": "^1.2.1",
     "gulp-uglify": "^1.1.0",
     "streamqueue": "^0.1.1"
