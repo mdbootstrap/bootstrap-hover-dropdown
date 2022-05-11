@@ -9,7 +9,7 @@
  * License: MIT
  * Homepage: http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
  */
-;(function ($, window, undefined) {
+ ;(function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -45,7 +45,7 @@
                 settings = $.extend(true, {}, defaults, options, data),
                 timeout, timeoutHover;
 
-            $parent.hover(function (event) {
+            $parent.on('mouseenter',function (event) {
                 // so a neighbor can't open the dropdown
                 if(!$parent.hasClass('open') && !$this.is(event.target)) {
                     // stop this event, stop executing any code
@@ -54,7 +54,7 @@
                 }
 
                 openDropdown(event);
-            }, function () {
+            }).on('mouseleave',function () {
                 // clear timer for hover event
                 window.clearTimeout(timeoutHover)
                 timeout = window.setTimeout(function () {
@@ -65,7 +65,7 @@
             });
 
             // this helps with button groups!
-            $this.hover(function (event) {
+            $this.on('mouseenter',function (event) {
                 // this helps prevent a double event from firing.
                 // see https://github.com/CWSpear/bootstrap-hover-dropdown/issues/55
                 if(!$parent.hasClass('open') && !$parent.is(event.target)) {
@@ -81,7 +81,7 @@
             $parent.find('.dropdown-submenu').each(function (){
                 var $this = $(this);
                 var subTimeout;
-                $this.hover(function () {
+                $this.on('mouseenter', function () {
                     window.clearTimeout(subTimeout);
                     $this.children('.dropdown-menu').show();
                     // always close submenu siblings instantly
@@ -108,7 +108,7 @@
                 
                 // delay for hover event.  
                 timeoutHover = window.setTimeout(function () {
-                    $allDropdowns.find(':focus').blur();
+                    $allDropdowns.find(':focus').trigger('blur');
 
                     if(settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
