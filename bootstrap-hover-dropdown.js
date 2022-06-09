@@ -43,7 +43,9 @@
                 // shownEvent  = 'shown.bs.dropdown',
                 // hiddenEvent = 'hidden.bs.dropdown',
                 settings = $.extend(true, {}, defaults, options, data),
-                timeout, timeoutHover;
+                timeout, timeoutHover,
+                timeouts = [],
+                timeoutsHover = [];
 
             $parent.hover(function (event) {
                 // so a neighbor can't open the dropdown
@@ -56,12 +58,12 @@
                 openDropdown(event);
             }, function () {
                 // clear timer for hover event
-                window.clearTimeout(timeoutHover)
-                timeout = window.setTimeout(function () {
+                while(timeout = timeoutsHover.pop()) { window.clearTimeout(timeout) };
+                timeouts.push(window.setTimeout(function () {
                     $this.attr('aria-expanded', 'false');
                     $parent.removeClass('open');
                     $this.trigger(hideEvent);
-                }, settings.delay);
+                }, settings.delay));
             });
 
             // this helps with button groups!
@@ -102,23 +104,23 @@
                 }
 
                 // clear dropdown timeout here so it doesnt close before it should
-                window.clearTimeout(timeout);
+                while(timeout = timeouts.pop()) { window.clearTimeout(timeout) };
                 // restart hover timer
-                window.clearTimeout(timeoutHover);
+                while(timeout = timeoutsHover.pop()) { window.clearTimeout(timeout) };
                 
                 // delay for hover event.  
-                timeoutHover = window.setTimeout(function () {
+                timeoutsHover.push(window.setTimeout(function () {
                     $allDropdowns.find(':focus').blur();
 
                     if(settings.instantlyCloseOthers === true)
                         $allDropdowns.removeClass('open');
                     
                     // clear timer for hover event
-                    window.clearTimeout(timeoutHover);
+                    while(timeout = timeoutsHover.pop()) { window.clearTimeout(timeout) };
                     $this.attr('aria-expanded', 'true');
                     $parent.addClass('open');
                     $this.trigger(showEvent);
-                }, settings.hoverDelay);
+                }, settings.hoverDelay));
             }
         });
     };
